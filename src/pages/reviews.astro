@@ -1,0 +1,464 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`${t('reviews.title')} - Pesa Leo`}>
+  <Header />
+  
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title fade-in">{t('reviews.title')}</h1>
+        <p class="page-subtitle fade-in">
+          {lang === 'en' 
+            ? 'Real stories from real customers across Tanzania'
+            : 'Hadithi za kweli kutoka kwa wateja wa kweli nchini Tanzania'
+          }
+        </p>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews-section">
+      <div class="container">
+        <div class="reviews-grid">
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 5}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="review-text">"{t('review1.text')}"</p>
+            <div class="review-author">
+              <div class="author-avatar">JM</div>
+              <div class="author-info">
+                <div class="author-name">{t('review1.author').split(',')[0]}</div>
+                <div class="author-location">{t('review1.author').split(',')[1]}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 5}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="review-text">"{t('review2.text')}"</p>
+            <div class="review-author">
+              <div class="author-avatar">FH</div>
+              <div class="author-info">
+                <div class="author-name">{t('review2.author').split(',')[0]}</div>
+                <div class="author-location">{t('review2.author').split(',')[1]}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 5}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="review-text">"{t('review3.text')}"</p>
+            <div class="review-author">
+              <div class="author-avatar">DK</div>
+              <div class="author-info">
+                <div class="author-name">{t('review3.author').split(',')[0]}</div>
+                <div class="author-location">{t('review3.author').split(',')[1]}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Reviews -->
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 5}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="review-text">
+              "{lang === 'en' 
+                ? 'The customer service is exceptional. They helped me understand everything clearly.'
+                : 'Huduma kwa wateja ni ya kipekee. Walinisaidia kuelewa kila kitu wazi.'
+              }"
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">AM</div>
+              <div class="author-info">
+                <div class="author-name">{lang === 'en' ? 'Amina Mohamed' : 'Amina Mohamed'}</div>
+                <div class="author-location">{lang === 'en' ? 'Dodoma' : 'Dodoma'}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 4}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="star-outline">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <p class="review-text">
+              "{lang === 'en' 
+                ? 'Great app! Easy to use and the money came quickly. Just wish the interest rates were a bit lower.'
+                : 'App nzuri! Rahisi kutumia na pesa zilikuja haraka. Ningependa tu viwango vya riba viwe chini kidogo.'
+              }"
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <div class="author-name">{lang === 'en' ? 'Said Mwalimu' : 'Said Mwalimu'}</div>
+                <div class="author-location">{lang === 'en' ? 'Zanzibar' : 'Zanzibar'}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card card fade-in">
+            <div class="review-stars">
+              {Array.from({length: 5}, (_, i) => (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="review-text">
+              "{lang === 'en' 
+                ? 'I have been using Pesa Leo for 6 months now. Very reliable and trustworthy.'
+                : 'Nimetumia Pesa Leo kwa miezi 6 sasa. Ni ya kuaminika sana na ya kutumainia.'
+              }"
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">GM</div>
+              <div class="author-info">
+                <div class="author-name">{lang === 'en' ? 'Grace Mtonga' : 'Grace Mtonga'}</div>
+                <div class="author-location">{lang === 'en' ? 'Iringa' : 'Iringa'}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section stats-section">
+      <div class="container">
+        <h2 class="section-title">
+          {lang === 'en' ? 'Customer Satisfaction' : 'Kuridhisha Wateja'}
+        </h2>
+        <div class="stats-grid">
+          <div class="stat-card fade-in">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div class="stat-number">4.8/5</div>
+            <div class="stat-label">{lang === 'en' ? 'Average Rating' : 'Ukadiriaji wa Wastani'}</div>
+          </div>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+                <path d="M20 8v6"/>
+                <path d="M23 11h-6"/>
+              </svg>
+            </div>
+            <div class="stat-number">98%</div>
+            <div class="stat-label">{lang === 'en' ? 'Customer Retention' : 'Uhifadhi wa Wateja'}</div>
+          </div>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <path d="M13 8H7"/>
+                <path d="M17 12H7"/>
+              </svg>
+            </div>
+            <div class="stat-number">50,000+</div>
+            <div class="stat-label">{lang === 'en' ? 'Reviews Collected' : 'Maoni Yaliyokusanywa'}</div>
+          </div>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22,4 12,14.01 9,11.01"/>
+              </svg>
+            </div>
+            <div class="stat-number">96%</div>
+            <div class="stat-label">{lang === 'en' ? 'Would Recommend' : 'Wangependekeza'}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-content fade-in">
+          <h2 class="cta-title">
+            {lang === 'en' 
+              ? 'Join Thousands of Satisfied Customers'
+              : 'Jiunge na Maelfu ya Wateja Wenye Kuridhika'
+            }
+          </h2>
+          <p class="cta-subtitle">
+            {lang === 'en' 
+              ? 'Experience the fastest and most reliable loan service in Tanzania'
+              : 'Pata uzoefu wa huduma ya mikopo ya haraka na ya kuaminika zaidi Tanzania'
+            }
+          </p>
+          <a href="https://play.google.com/store" target="_blank" class="btn btn-primary btn-lg">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            </svg>
+            {lang === 'en' ? 'Download Now' : 'Pakua Sasa'}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 120px 0 60px;
+    color: white;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+  }
+
+  .review-card {
+    padding: 30px;
+    background: white;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .star {
+    color: var(--color-warning);
+  }
+
+  .star-outline {
+    color: var(--color-border);
+    stroke-width: 2;
+  }
+
+  .review-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .author-name {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+
+  .author-location {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+  }
+
+  .stats-section {
+    background: var(--color-surface);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stat-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .cta-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    gap: 12px;
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-lg:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 100px 0 40px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .review-card {
+      padding: 24px;
+    }
+
+    .review-text {
+      font-size: 1rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      padding: 30px 20px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+</style>

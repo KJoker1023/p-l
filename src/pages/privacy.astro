@@ -1,0 +1,493 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Privacy policy content in markdown
+const privacyContentEn = `
+# Privacy Policy
+
+**Effective Date:** January 1, 2025  
+**Last Updated:** January 1, 2025
+
+## 1. Introduction
+
+Welcome to Pesa Leo. We are committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and services.
+
+## 2. Information We Collect
+
+### 2.1 Personal Information
+- **Identity Information:** Full name, date of birth, national ID number
+- **Contact Information:** Phone number, email address, physical address
+- **Financial Information:** Bank account details, mobile wallet information, income details
+- **Device Information:** Device ID, phone model, operating system version
+
+### 2.2 Automatically Collected Information
+- **Usage Data:** How you interact with our app
+- **Location Data:** General location information for fraud prevention
+- **Log Data:** App crashes, performance data, and technical logs
+
+## 3. How We Use Your Information
+
+We use your information to:
+- Process loan applications and disbursements
+- Verify your identity and creditworthiness
+- Communicate with you about your account and services
+- Improve our services and user experience
+- Comply with legal and regulatory requirements
+- Prevent fraud and ensure security
+
+## 4. Information Sharing and Disclosure
+
+We may share your information with:
+- **Credit Reference Bureaus:** For credit scoring and reporting
+- **Payment Processors:** To facilitate transactions
+- **Regulatory Authorities:** As required by law
+- **Service Providers:** Who help us operate our business
+- **Legal Authorities:** When required by court orders or legal processes
+
+We **never** sell your personal information to third parties for marketing purposes.
+
+## 5. Data Security
+
+We implement industry-standard security measures including:
+- End-to-end encryption for sensitive data
+- Secure data transmission protocols (HTTPS/TLS)
+- Regular security audits and assessments
+- Access controls and authentication systems
+- Data backup and recovery procedures
+
+## 6. Data Retention
+
+We retain your information for as long as necessary to:
+- Provide our services to you
+- Comply with legal obligations
+- Resolve disputes and enforce agreements
+- Meet regulatory requirements
+
+Generally, we keep your data for 7 years after account closure, as required by Tanzanian financial regulations.
+
+## 7. Your Rights
+
+You have the right to:
+- **Access** your personal information
+- **Correct** inaccurate or incomplete information
+- **Delete** your information (subject to legal requirements)
+- **Object** to processing of your information
+- **Withdraw consent** where applicable
+- **Data portability** - receive your data in a structured format
+
+To exercise these rights, contact us at privacy@pesaleo.co.tz
+
+## 8. Cookies and Tracking
+
+Our app may use cookies and similar technologies to:
+- Remember your preferences
+- Analyze app usage and performance
+- Provide personalized experiences
+- Ensure security and prevent fraud
+
+You can control cookie settings through your device settings.
+
+## 9. Third-Party Services
+
+Our app integrates with third-party services including:
+- **Google Analytics:** For usage analytics
+- **Firebase:** For app performance and crashes
+- **Payment Gateways:** For transaction processing
+
+These services have their own privacy policies, and we encourage you to review them.
+
+## 10. International Data Transfers
+
+Your data is primarily processed within Tanzania. However, some of our service providers may be located outside Tanzania. We ensure appropriate safeguards are in place for such transfers.
+
+## 11. Changes to This Policy
+
+We may update this Privacy Policy from time to time. We will notify you of significant changes through:
+- In-app notifications
+- Email communications
+- Updates on our website
+
+Continued use of our services after changes constitutes acceptance of the updated policy.
+
+## 12. Contact Information
+
+If you have questions about this Privacy Policy, please contact us:
+
+**Email:** privacy@pesaleo.co.tz  
+**Phone:** +255 123 456 789  
+**Address:** Pesa Leo Ltd, Plot 123, Dar es Salaam, Tanzania
+
+**Data Protection Officer:** dpo@pesaleo.co.tz
+
+## 13. Governing Law
+
+This Privacy Policy is governed by the laws of Tanzania, including the Electronic and Postal Communications Act and other applicable data protection regulations.
+
+---
+
+*This privacy policy is available in English and Kiswahili. In case of any discrepancy, the English version shall prevail.*
+`;
+
+const privacyContentSw = `
+# Sera ya Faragha
+
+**Tarehe ya Utendaji:** Januari 1, 2025  
+**Ilisasishwa Mwisho:** Januari 1, 2025
+
+## 1. Utangulizi
+
+Karibu Pesa Leo. Tumejitolea kulinda faragha yako na taarifa zako za kibinafsi. Sera hii ya Faragha inaelezea jinsi tunavyokusanya, kutumia, kufichua, na kulinda taarifa zako wakati unatumia programu yetu ya simu na huduma.
+
+## 2. Taarifa Tunazokusanya
+
+### 2.1 Taarifa za Kibinafsi
+- **Taarifa za Utambulisho:** Jina kamili, tarehe ya kuzaliwa, nambari ya kitambulisho cha kitaifa
+- **Taarifa za Mawasiliano:** Nambari ya simu, anwani ya barua pepe, anwani ya kimwili
+- **Taarifa za Kifedha:** Maelezo ya akaunti ya benki, taarifa za mkoba wa simu, maelezo ya kipato
+- **Taarifa za Kifaa:** Kitambulisho cha kifaa, muundo wa simu, toleo la mfumo wa uendeshaji
+
+### 2.2 Taarifa Zinazokusanywa Otomatiki
+- **Data ya Matumizi:** Jinsi unavyoshirikiana na programu yetu
+- **Data ya Mahali:** Taarifa za jumla za mahali kwa kuzuia ulaghai
+- **Data ya Kumbukumbu:** Programu zinazovunjika, data ya utendaji, na kumbukumbu za kiufundi
+
+## 3. Jinsi Tunavyotumia Taarifa Zako
+
+Tunatumia taarifa zako ili:
+- Kuchakata maombi ya mikopo na ugavi
+- Kuthibitisha utambulisho wako na uwezo wa mkopo
+- Kuwasiliana nawe kuhusu akaunti na huduma zako
+- Kuboresha huduma zetu na uzoefu wa mtumiaji
+- Kuzingatia mahitaji ya kisheria na udhibiti
+- Kuzuia ulaghai na kuhakikisha usalama
+
+## 4. Kushiriki na Kufichua Taarifa
+
+Tunaweza kushiriki taarifa zako na:
+- **Makatibu wa Marejesho ya Mkopo:** Kwa ajili ya ukadiriaji wa mkopo na uripoti
+- **Wasindikaji wa Malipo:** Kuwezesha miamala
+- **Mamlaka za Udhibiti:** Kama inavyohitajika na sheria
+- **Wahudumu wa Huduma:** Wanaotusaidia kuendeshea biashara yetu
+- **Mamlaka za Kisheria:** Wakati unahitajika na maagizo ya mahakama au michakato ya kisheria
+
+**Kamwe** hatuuzi taarifa zako za kibinafsi kwa makundi ya tatu kwa madhumuni ya masoko.
+
+## 5. Usalama wa Data
+
+Tunatekeleza hatua za usalama za kiwango cha sekta pamoja na:
+- Usimbaji fiche wa mwisho hadi mwisho kwa data nyeti
+- Itifaki za uhamishaji salama wa data (HTTPS/TLS)
+- Ukaguzi wa kawaida wa usalama na tathmini
+- Udhibiti wa ufikiaji na mifumo ya uthibitishaji
+- Taratibu za kuhifadhi na kurejesha data
+
+## 6. Uhifadhi wa Data
+
+Tunahifadhi taarifa zako kwa muda unaohitajika ili:
+- Kukupa huduma zetu
+- Kuzingatia wajibu wa kisheria
+- Kutatua migogoro na kutekeleza makubaliano
+- Kukidhi mahitaji ya udhibiti
+
+Kwa ujumla, tunahifadhi data yako kwa miaka 7 baada ya kufunga akaunti, kama inavyohitajika na kanuni za kifedha za Tanzania.
+
+## 7. Haki Zako
+
+Una haki ya:
+- **Kufikia** taarifa zako za kibinafsi
+- **Kusahihisha** taarifa zisizo sahihi au zisizo kamili
+- **Kufuta** taarifa zako (kunyingiliana na mahitaji ya kisheria)
+- **Kupinga** uchakataji wa taarifa zako
+- **Kujiondoa idhini** pale inapotumika
+- **Upitishaji wa data** - pokea data yako katika muundo ulioundwa
+
+Ili kutumia haki hizi, wasiliana nasi kwa privacy@pesaleo.co.tz
+
+## 8. Vidakuzi na Ufuatiliaji
+
+Programu yetu inaweza kutumia vidakuzi na teknolojia zinazofanana ili:
+- Kukumbuka mapendeleo yako
+- Kuchambua matumizi na utendaji wa programu
+- Kutoa uzoefu wa kibinafsi
+- Kuhakikisha usalama na kuzuia ulaghai
+
+Unaweza kudhibiti mipangilio ya vidakuzi kupitia mipangilio ya kifaa chako.
+
+## 9. Huduma za Makundi ya Tatu
+
+Programu yetu inaungana na huduma za makundi ya tatu ikiwa ni pamoja na:
+- **Google Analytics:** Kwa uchambuzi wa matumizi
+- **Firebase:** Kwa utendaji wa programu na kuvunjika
+- **Malango ya Malipo:** Kwa uchakataji wa miamala
+
+Huduma hizi zina sera zao za faragha, na tunahimiza ukague.
+
+## 10. Uhamishaji wa Data wa Kimataifa
+
+Data yako inachakatwa kimsingi ndani ya Tanzania. Hata hivyo, baadhi ya wahudumu wa huduma wetu wanaweza kuwa nje ya Tanzania. Tunahakikisha vikwazo vinavyofaa viko mahali kwa uhamisho huo.
+
+## 11. Mabadiliko ya Sera Hii
+
+Tunaweza kusasisha Sera hii ya Faragha mara kwa mara. Tutakujulisha mabadiliko makubwa kupitia:
+- Arifa ndani ya programu
+- Mawasiliano ya barua pepe
+- Masasisho kwenye tovuti yetu
+
+Kuendelea kutumia huduma zetu baada ya mabadiliko kunamaanisha kukubali sera iliyosasishwa.
+
+## 12. Taarifa za Mawasiliano
+
+Ikiwa una maswali kuhusu Sera hii ya Faragha, tafadhali wasiliana nasi:
+
+**Barua pepe:** privacy@pesaleo.co.tz  
+**Simu:** +255 123 456 789  
+**Anwani:** Pesa Leo Ltd, Kiwanja 123, Dar es Salaam, Tanzania
+
+**Afisa wa Ulinzi wa Data:** dpo@pesaleo.co.tz
+
+## 13. Sheria Inayodhibiti
+
+Sera hii ya Faragha inadhibitiwa na sheria za Tanzania, ikiwa ni pamoja na Sheria ya Mawasiliano ya Kielektroniki na Barua na kanuni nyingine zinazotumika za ulinzi wa data.
+
+---
+
+*Sera hii ya faragha inapatikana kwa Kiingereza na Kiswahili. Ikiwa kuna utofauti wowote, toleo la Kiingereza litakuwa na nguvu.*
+`;
+---
+
+<Layout title={`${t('privacy.title')} - Pesa Leo`}>
+  <Header />
+  
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title fade-in">{t('privacy.title')}</h1>
+      </div>
+    </section>
+
+    <section class="section policy-section">
+      <div class="container">
+        <div class="policy-content fade-in">
+          <div class="markdown-content" set:html={lang === 'en' ? 
+            await Astro.glob('../utils/markdown.js').then(([md]) => md.render(privacyContentEn)) :
+            await Astro.glob('../utils/markdown.js').then(([md]) => md.render(privacyContentSw))
+          } />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 120px 0 60px;
+    color: white;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .policy-section {
+    background: white;
+  }
+
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .markdown-content {
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+
+  .markdown-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .markdown-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-surface);
+    padding-bottom: 10px;
+  }
+
+  .markdown-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 30px 0 15px;
+    color: var(--color-text);
+  }
+
+  .markdown-content p {
+    margin-bottom: 20px;
+    color: var(--color-text-secondary);
+  }
+
+  .markdown-content ul, 
+  .markdown-content ol {
+    margin: 20px 0;
+    padding-left: 30px;
+  }
+
+  .markdown-content li {
+    margin-bottom: 10px;
+    color: var(--color-text-secondary);
+  }
+
+  .markdown-content strong {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .markdown-content em {
+    font-style: italic;
+    color: var(--color-text);
+  }
+
+  .markdown-content blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding: 20px;
+    margin: 30px 0;
+    background: var(--color-surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .markdown-content blockquote p {
+    margin: 0;
+    font-style: italic;
+  }
+
+  .markdown-content code {
+    background: var(--color-surface);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+  }
+
+  .markdown-content pre {
+    background: var(--color-surface);
+    padding: 20px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  .markdown-content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .markdown-content hr {
+    border: none;
+    height: 2px;
+    background: var(--color-surface);
+    margin: 40px 0;
+    border-radius: 1px;
+  }
+
+  .markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .markdown-content th {
+    background: var(--color-surface);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .markdown-content td {
+    color: var(--color-text-secondary);
+  }
+
+  .markdown-content a {
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .markdown-content a:hover {
+    border-bottom-color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 100px 0 40px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .policy-content {
+      max-width: 100%;
+    }
+
+    .markdown-content {
+      font-size: 16px;
+    }
+
+    .markdown-content h1 {
+      font-size: 2rem;
+    }
+
+    .markdown-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .markdown-content h3 {
+      font-size: 1.125rem;
+    }
+
+    .markdown-content ul,
+    .markdown-content ol {
+      padding-left: 20px;
+    }
+
+    .markdown-content pre {
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .markdown-content table {
+      font-size: 14px;
+    }
+
+    .markdown-content th,
+    .markdown-content td {
+      padding: 8px 12px;
+    }
+  }
+</style>

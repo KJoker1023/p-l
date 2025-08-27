@@ -1,0 +1,347 @@
+---
+import { getLangFromUrl, useTranslations, languages, localizeUrl } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+const route = currentPath.replace(`/${lang}`, '') || '/';
+
+// Function to get language from URL params for client-side
+const getUrlLang = () => {
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('lang') || 'en';
+  }
+  return 'en';
+};
+---
+
+<header class="header">
+  <nav class="nav container">
+    <a href={localizeUrl('/', lang)} class="logo">
+      <span class="logo-text">Pesa Leo</span>
+    </a>
+    
+    <div class="nav-links" id="navLinks">
+      <a href={localizeUrl('/', lang)} class="nav-link">{t('nav.home')}</a>
+      <a href={localizeUrl('/about', lang)} class="nav-link">{t('nav.about')}</a>
+      <a href={localizeUrl('/advantages', lang)} class="nav-link">{t('nav.advantages')}</a>
+      <a href={localizeUrl('/reviews', lang)} class="nav-link">{t('nav.reviews')}</a>
+      <a href={localizeUrl('/privacy', lang)} class="nav-link">{t('nav.privacy')}</a>
+    </div>
+
+    <div class="nav-actions">
+      <div class="language-selector">
+        <button class="lang-button" id="langButton">
+          <span class="current-lang">{languages[lang]}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          {Object.entries(languages).map(([code, name]) => (
+            <button class="lang-option" data-lang={code}>
+              {name}
+            </button>
+          ))}
+        </div>
+      </div>
+      <a href="https://play.google.com/store" target="_blank" class="btn btn-primary download-btn">
+        {t('nav.download')}
+      </a>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<script>
+  // Language switcher functionality
+  function initLanguageSwitcher() {
+    const langButton = document.getElementById('langButton');
+    const langDropdown = document.getElementById('langDropdown');
+    const langOptions = document.querySelectorAll('.lang-option');
+    
+    if (!langButton || !langDropdown) return;
+    
+    langButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('show');
+    });
+    
+    document.addEventListener('click', () => {
+      langDropdown.classList.remove('show');
+    });
+    
+    langOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        const selectedLang = e.target.getAttribute('data-lang');
+        const currentUrl = new URL(window.location.href);
+        const currentLang = currentUrl.searchParams.get('lang') || 'en';
+        
+        if (selectedLang !== currentLang) {
+          // Remove existing lang parameter and add new one
+          currentUrl.searchParams.set('lang', selectedLang);
+          
+          // Navigate to new URL with language parameter
+          if (selectedLang === 'en') {
+            // For English (default), we can remove the lang parameter
+            currentUrl.searchParams.delete('lang');
+          }
+          
+          window.location.href = currentUrl.toString();
+        }
+      });
+    });
+  }
+  
+  // Mobile menu functionality
+  function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (!mobileMenuBtn || !navLinks) return;
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      mobileMenuBtn.classList.toggle('active');
+    });
+  }
+  
+  // Initialize on DOM content loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initLanguageSwitcher();
+      initMobileMenu();
+    });
+  } else {
+    initLanguageSwitcher();
+    initMobileMenu();
+  }
+</script>
+
+<style>
+  .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    min-height: 72px;
+  }
+
+  .logo {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.2s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .language-selector {
+    position: relative;
+  }
+
+  .lang-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: white;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .lang-button:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    min-width: 120px;
+    z-index: 1000;
+  }
+
+  .lang-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left;
+  }
+
+  .lang-option:hover {
+    background: var(--color-surface);
+  }
+
+  .download-btn {
+    white-space: nowrap;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-menu-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      padding: 12px 16px;
+      min-height: 64px;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 20px;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-actions {
+      gap: 12px;
+    }
+
+    .download-btn {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .lang-button {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+  }
+</style>

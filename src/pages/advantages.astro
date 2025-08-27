@@ -1,0 +1,432 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`${t('advantages.title')} - Pesa Leo`}>
+  <Header />
+  
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title fade-in">{t('advantages.title')}</h1>
+        <p class="page-subtitle fade-in">
+          {lang === 'en' 
+            ? 'Discover why thousands of Tanzanians choose Pesa Leo for their financial needs'
+            : 'Gundua kwa nini maelfu ya Watanzania wanachagua Pesa Leo kwa mahitaji yao ya kifedha'
+          }
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Advantages -->
+    <section class="section advantages-section">
+      <div class="container">
+        <div class="advantages-grid">
+          <div class="advantage-card card fade-in">
+            <div class="advantage-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+            </div>
+            <h3 class="advantage-title">{t('advantage1.title')}</h3>
+            <p class="advantage-desc">{t('advantage1.desc')}</p>
+            <ul class="advantage-features">
+              <li>{lang === 'en' ? 'AI-powered credit scoring' : 'Utathmini wa mikopo kwa AI'}</li>
+              <li>{lang === 'en' ? 'Real-time decision making' : 'Maamuzi ya wakati halisi'}</li>
+              <li>{lang === 'en' ? 'Instant notifications' : 'Arifa za papo hapo'}</li>
+            </ul>
+          </div>
+
+          <div class="advantage-card card fade-in">
+            <div class="advantage-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="advantage-title">{t('advantage2.title')}</h3>
+            <p class="advantage-desc">{t('advantage2.desc')}</p>
+            <ul class="advantage-features">
+              <li>{lang === 'en' ? 'No hidden charges' : 'Hakuna malipo ya siri'}</li>
+              <li>{lang === 'en' ? 'Flexible interest rates' : 'Viwango vya riba vya kubadilika'}</li>
+              <li>{lang === 'en' ? 'Clear terms and conditions' : 'Masharti wazi'}</li>
+            </ul>
+          </div>
+
+          <div class="advantage-card card fade-in">
+            <div class="advantage-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="advantage-title">{t('advantage3.title')}</h3>
+            <p class="advantage-desc">{t('advantage3.desc')}</p>
+            <ul class="advantage-features">
+              <li>{lang === 'en' ? 'WhatsApp support' : 'Msaada wa WhatsApp'}</li>
+              <li>{lang === 'en' ? 'Phone support in Swahili & English' : 'Msaada wa simu kwa Kiswahili na Kiingereza'}</li>
+              <li>{lang === 'en' ? 'In-app chat support' : 'Msaada wa mazungumzo ndani ya app'}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process-section">
+      <div class="container">
+        <h2 class="section-title">
+          {lang === 'en' ? 'How It Works' : 'Jinsi Inavyofanya Kazi'}
+        </h2>
+        <div class="process-steps">
+          <div class="process-step fade-in">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>{lang === 'en' ? 'Download & Register' : 'Pakua na Jisajili'}</h3>
+              <p>
+                {lang === 'en' 
+                  ? 'Download the Pesa Leo app and create your account in less than 2 minutes'
+                  : 'Pakua app ya Pesa Leo na uunde akaunti yako ndani ya dakika chini ya 2'
+                }
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step fade-in">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>{lang === 'en' ? 'Apply for Loan' : 'Omba Mkopo'}</h3>
+              <p>
+                {lang === 'en' 
+                  ? 'Fill out the simple loan application form with your basic information'
+                  : 'Jaza fomu rahisi ya maombi ya mkopo na taarifa zako za kimsingi'
+                }
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step fade-in">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>{lang === 'en' ? 'Get Approved' : 'Pata Idhini'}</h3>
+              <p>
+                {lang === 'en' 
+                  ? 'Our AI system evaluates your application and gives you an instant decision'
+                  : 'Mfumo wetu wa AI unatahmini maombi yako na kukupa uamuzi wa papo hapo'
+                }
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step fade-in">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>{lang === 'en' ? 'Receive Money' : 'Pokea Pesa'}</h3>
+              <p>
+                {lang === 'en' 
+                  ? 'Money is sent directly to your mobile wallet within minutes'
+                  : 'Pesa zinatumwa moja kwa moja kwenye mkoba wako wa simu ndani ya dakika'
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Features -->
+    <section class="section features-section">
+      <div class="container">
+        <h2 class="section-title">
+          {lang === 'en' ? 'Additional Features' : 'Vipengele vya Ziada'}
+        </h2>
+        <div class="features-grid">
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>{lang === 'en' ? 'SMS Notifications' : 'Arifa za SMS'}</h3>
+            <p>
+              {lang === 'en' 
+                ? 'Get updates on your loan status via SMS'
+                : 'Pata masasisho ya hali ya mkopo wako kupitia SMS'
+              }
+            </p>
+          </div>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <h3>{lang === 'en' ? 'Multiple Payment Options' : 'Chaguzi Nyingi za Malipo'}</h3>
+            <p>
+              {lang === 'en' 
+                ? 'Pay via M-Pesa, Tigo Pesa, or bank transfer'
+                : 'Lipa kupitia M-Pesa, Tigo Pesa, au uhamisho wa benki'
+              }
+            </p>
+          </div>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11H1v3h8v3l3-4.5L9 8v3z"/>
+                <path d="M22 12h-7"/>
+                <path d="M16 16l4-4-4-4"/>
+              </svg>
+            </div>
+            <h3>{lang === 'en' ? 'Loan History' : 'Historia ya Mikopo'}</h3>
+            <p>
+              {lang === 'en' 
+                ? 'Track all your past and current loans in one place'
+                : 'Fuatilia mikopo yako yote ya awali na ya sasa mahali pamoja'
+              }
+            </p>
+          </div>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+                <polyline points="17,11 19,13 23,9"/>
+              </svg>
+            </div>
+            <h3>{lang === 'en' ? 'Credit Score Building' : 'Kujenga Alama za Mkopo'}</h3>
+            <p>
+              {lang === 'en' 
+                ? 'Build your credit history with every successful repayment'
+                : 'Jenga historia ya mikopo yako na kila malipo ya mafanikio'
+              }
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 120px 0 60px;
+    color: white;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+  }
+
+  .advantage-card {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .advantage-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: white;
+  }
+
+  .advantage-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-text);
+  }
+
+  .advantage-desc {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .advantage-features {
+    list-style: none;
+    text-align: left;
+  }
+
+  .advantage-features li {
+    padding: 8px 0;
+    color: var(--color-text-secondary);
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .advantage-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: 600;
+  }
+
+  .process-section {
+    background: var(--color-surface);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+  }
+
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text);
+  }
+
+  .step-content p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .features-section {
+    background: white;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .feature-item {
+    padding: 30px;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+  }
+
+  .feature-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text);
+  }
+
+  .feature-item p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 100px 0 40px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .advantages-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .advantage-card {
+      padding: 30px;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .process-step {
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .feature-item {
+      padding: 24px;
+    }
+  }
+</style>

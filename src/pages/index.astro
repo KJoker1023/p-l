@@ -1,0 +1,383 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Pesa Leo - Quick Cash Loans in Tanzania">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content fade-in">
+          <h1 class="hero-title">{t('home.hero.title')}</h1>
+          <p class="hero-subtitle">{t('home.hero.subtitle')}</p>
+          <div class="hero-actions">
+            <a href="https://play.google.com/store" target="_blank" class="btn btn-primary btn-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+              </svg>
+              {t('home.hero.cta')}
+            </a>
+          </div>
+        </div>
+        <div class="hero-image fade-in">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="app-interface">
+                <div class="app-header">
+                  <div class="status-bar"></div>
+                  <h3>Pesa Leo</h3>
+                </div>
+                <div class="loan-card">
+                  <div class="loan-amount">TSH 50,000</div>
+                  <div class="loan-status">{lang === 'en' ? 'Available' : 'Inapatikana'}</div>
+                </div>
+                <div class="quick-actions">
+                  <div class="action-btn">{lang === 'en' ? 'Apply Now' : 'Omba Sasa'}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+      <div class="container">
+        <h2 class="section-title">{t('home.features.title')}</h2>
+        <div class="features-grid">
+          <div class="feature-card card fade-in">
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">{t('home.feature1.title')}</h3>
+            <p class="feature-desc">{t('home.feature1.desc')}</p>
+          </div>
+          
+          <div class="feature-card card fade-in">
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                <path d="M3 12h6"/>
+                <path d="M15 12h6"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">{t('home.feature2.title')}</h3>
+            <p class="feature-desc">{t('home.feature2.desc')}</p>
+          </div>
+          
+          <div class="feature-card card fade-in">
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 9V5a3 3 0 0 0-6 0v4"/>
+                <rect x="2" y="9" width="20" height="11" rx="2" ry="2"/>
+                <circle cx="12" cy="15" r="1"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">{t('home.feature3.title')}</h3>
+            <p class="feature-desc">{t('home.feature3.desc')}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="section download-section">
+      <div class="container">
+        <div class="download-content">
+          <div class="download-text fade-in">
+            <h2 class="download-title">{t('home.download.title')}</h2>
+            <p class="download-subtitle">{t('home.download.subtitle')}</p>
+            <a href="https://play.google.com/store" target="_blank" class="btn btn-primary btn-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+              </svg>
+              {t('home.hero.cta')}
+            </a>
+          </div>
+          <div class="download-image fade-in">
+            <img src="https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                 alt="Tanzania landscape" class="download-bg-image">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    opacity: 0.05;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+  }
+
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    gap: 12px;
+  }
+
+  .phone-mockup {
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .phone-screen {
+    background: #1C1C1E;
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 8px solid #2C2C2E;
+  }
+
+  .app-interface {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 400px;
+  }
+
+  .app-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .status-bar {
+    height: 4px;
+    width: 40px;
+    background: #C7C7CC;
+    border-radius: 2px;
+    margin: 0 auto 16px;
+  }
+
+  .app-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .loan-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .loan-amount {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .loan-status {
+    opacity: 0.9;
+    font-size: 14px;
+  }
+
+  .quick-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .action-btn {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .features {
+    background: var(--color-surface);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+  .feature-card {
+    padding: 40px;
+    text-align: center;
+    background: white;
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: white;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-text);
+  }
+
+  .feature-desc {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .download-section {
+    background: white;
+  }
+
+  .download-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .download-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .download-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+  }
+
+  .download-bg-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: 120px 0 60px;
+    }
+
+    .hero .container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .feature-card {
+      padding: 30px;
+    }
+
+    .download-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .download-title {
+      font-size: 2rem;
+    }
+
+    .download-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .phone-mockup {
+      max-width: 250px;
+    }
+
+    .app-interface {
+      min-height: 350px;
+    }
+  }
+</style>
